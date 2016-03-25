@@ -34,3 +34,4 @@ result/
 *.bit
 sd_card/
 _sds/
+*.stats

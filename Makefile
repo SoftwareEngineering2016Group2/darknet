@@ -1,5 +1,7 @@
 GPU=0
 OPENCV=0
+DEBUG=0
+PROF=0
 
 VPATH=./src/
 EXEC=darknet.elf
@@ -18,6 +20,10 @@ LFLAGS = -O3
 
 LDFLAGS= -lm -pthread -lstdc++ 
 COMMON= 
+
+ifeq ($(PROF), 1)
+OPTS=-O0 -pg
+endif
 
 ifeq ($(OPENCV), 1) 
 COMMON+= -DOPENCV
