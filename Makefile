@@ -1,6 +1,7 @@
 GPU=0
 OPENCV=0
 DEBUG=0
+PROF=0
 
 ARCH= --gpu-architecture=compute_20 --gpu-code=compute_20 
 
@@ -17,6 +18,10 @@ CFLAGS=-Wall -Wfatal-errors
 
 ifeq ($(DEBUG), 1) 
 OPTS=-O0 -g
+endif
+
+ifeq ($(PROF), 1)
+OPTS=-O0 -pg
 endif
 
 CFLAGS+=$(OPTS)
