@@ -1,6 +1,8 @@
 #include "gemm.h"
 #include "utils.h"
 #include "cuda.h"
+#include "gemm_grid.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -68,7 +70,11 @@ void gemm(int TA, int TB, int M, int N, int K, float ALPHA,
         float BETA,
         float *C, int ldc)
 {
+#ifdef BLK
+    gemm_grid(0,0,M,N,K,ALPHA,A,K,B,N,BETA,C,N);
+#else
     gemm_cpu( TA,  TB,  M, N, K, ALPHA,A,lda, B, ldb,BETA,C,ldc);
+#endif
 }
 
 void gemm_nn(int M, int N, int K, float ALPHA, 
@@ -144,7 +150,7 @@ void gemm_cpu(int TA, int TB, int M, int N, int K, float ALPHA,
         float BETA,
         float *C, int ldc)
 {
-    //printf("cpu: %d %d %d %d %d %f %d %d %f %d\n",TA, TB, M, N, K, ALPHA, lda, ldb, BETA, ldc);
+    printf("cpu: %d %d %d %d %d %f %d %d %f %d\n",TA, TB, M, N, K, ALPHA, lda, ldb, BETA, ldc);
     int i, j;
     for(i = 0; i < M; ++i){
         for(j = 0; j < N; ++j){

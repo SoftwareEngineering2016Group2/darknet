@@ -343,6 +343,7 @@ void backward_bias(float *bias_updates, float *delta, int batch, int n, int size
     }
 }
 
+/* This is where heavy computation happens */
 void forward_convolutional_layer(convolutional_layer l, network_state state)
 {
     int out_h = convolutional_out_height(l);
@@ -387,7 +388,8 @@ void forward_convolutional_layer(convolutional_layer l, network_state state)
     float *a = l.filters;
     float *b = l.col_image;
     float *c = l.output;
-
+ 
+    // printf("Number of batches: %d, size=%lld\n", l.batch, (long long int) m*k*n);
     for(i = 0; i < l.batch; ++i){
         im2col_cpu(state.input, l.c, l.h, l.w, 
                 l.size, l.stride, l.pad, b);
