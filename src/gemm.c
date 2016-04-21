@@ -2,6 +2,8 @@
 #include "gemm_sds.h"
 #include "utils.h"
 #include "cuda.h"
+#include "gemm_grid.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>

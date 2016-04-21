@@ -21,4 +21,17 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.swp
+
+# self defined #
+assets/
+obj/
+result/
+*.bak
+*.sh
+
+# sdsoc #
+*.elf
+*.bit
+sd_card/
+_sds/
 *.stats
