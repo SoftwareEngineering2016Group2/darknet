@@ -6,3 +6,19 @@ Darknet is an open source neural network framework written in C and CUDA. It is 
 For more information see the [Darknet project website](http://pjreddie.com/darknet).
 
 For questions or issues please use the [Google Group](https://groups.google.com/forum/#!forum/darknet).
+
+#Darknet on Zedboard#
+
+## Compile
+Only software (Need the SDSoC Toolchain):
+```
+make SDS=1 
+```
+Hardware
+```
+make SDS=1 HW=1
+```
+Then copy the generated `sd_card/` to your Zedboard SD card.
+
+## Run
+Same as darknet original version.
