@@ -16,4 +16,6 @@
 #define PIPE_SIZE_KN (BLK_SIZE_KN*NUM_PIPES)
 #define PIPE_SIZE_MK (BLK_SIZE_MK*NUM_PIPES)
 
+#define BUFTYPE 0
+
 #endif

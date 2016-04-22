@@ -35,3 +35,4 @@ result/
 sd_card/
 _sds/
 *.stats
+*.tar.gz

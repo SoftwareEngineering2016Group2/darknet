@@ -29,7 +29,7 @@ BlockedMatrix* flatten_matrix_to_blocked(int T, float *A,
   blk_mat->oH  = (T == 0) ? M : N;
   blk_mat->oW  = (T == 0) ? N : M;
   blk_mat->ld  = lda;
-  blk_mat->mat = (float *) MALLOC(sizeof(float)*blk_mat->H*blk_mat->W);
+  blk_mat->mat = (float *) malloc(sizeof(float)*blk_mat->H*blk_mat->W);
   
   if (!blk_mat->mat) {
     fprintf(stderr, "Can't allocate memory for blocked matrix\n");

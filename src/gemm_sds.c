@@ -22,6 +22,8 @@ void gemm_sds(int TA, int TB, int M, int N, int K,
     float BETA,
     float *C, int ldc)
 {
+  printf("TA=%d TB=%d M=%d N=%d K=%d ALPHA=%lf BETA=%lf lda=%d ldb=%d ldc=%d\n",
+      TA,TB,M,N,K,ALPHA,BETA,lda,ldb,ldc);
   BlockedMatrix *A_blk = flatten_matrix_to_blocked(TA, A, M, K, lda, BLK_M, BLK_K);
   BlockedMatrix *B_blk = flatten_matrix_to_blocked(TB, B, K, N, ldb, BLK_K, BLK_N);
   BlockedMatrix *C_blk = flatten_matrix_to_blocked(0,  C, M, N, ldc, BLK_M, BLK_N);
@@ -29,4 +31,7 @@ void gemm_sds(int TA, int TB, int M, int N, int K,
   gemm_block_main(ALPHA,BETA,A_blk,B_blk,C_blk);
 
   blocked_matrix_to_flatten(C_blk, C);
+  free_blocked_matrix(A_blk);
+  free_blocked_matrix(B_blk);
+  free_blocked_matrix(C_blk);
 }
